@@ -1,5 +1,13 @@
 """Read-only S3 example: list buckets for the configured AWS identity."""
 
+import sys
+from pathlib import Path
+
+# Support both `python -m s3.list_buckets` from the repository root and
+# `python s3/list_buckets.py` from an IDE or terminal.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from shared import AwsClientFactory
 
 
